@@ -60,12 +60,13 @@ const ScrollableTabBar = createReactClass({
   },
 
   updateView(offset) {
-    const position = Math.floor(offset.value);
-    const pageOffset = offset.value % 1;
+    const offsetV = offset.value || 0;
+    const position = Math.floor(offsetV);
+    const pageOffset = offsetV % 1;
     const tabCount = this.props.tabs.length;
     const lastTabPosition = tabCount - 1;
 
-    if (tabCount === 0 || offset.value < 0 || offset.value > lastTabPosition) {
+    if (tabCount === 0 || offsetV < 0 || offsetV > lastTabPosition) {
       return;
     }
 
